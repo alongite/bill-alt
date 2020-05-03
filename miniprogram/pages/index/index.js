@@ -43,8 +43,10 @@ Page({
   },
 
   loadBillList(openid){
+    const _ = app.globalData.db.command;
+    console.log(app.globalData.db);
     const bills = app.globalData.db.collection(CONST.COLLECTION_BILLS);
-    bills.where({_openid: openid}).get().then(res => {
+    bills.where({_openid: openid, isDelete: _.not(_.eq(true))}).get().then(res => {
       console.log(res);
       this.setData({
         loading: false,
@@ -73,5 +75,8 @@ Page({
 
   clickBillItem (params) {
     console.log(params);
+    wx.navigateTo({
+      url: '/pages/bill-detail/bill-detail?id=' + params.currentTarget.dataset.id,
+    })
   }
 })

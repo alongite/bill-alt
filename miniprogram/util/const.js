@@ -4,9 +4,10 @@ const billType = [
 ]
 
 const billTypeMap = {}
-for(let item of billType){
+billType.forEach((item, index) => {
   billTypeMap[item.value] = item;
-}
+  item.index = index;
+})
 
 const COLLECTION_BILLS = 'bill-info';
 

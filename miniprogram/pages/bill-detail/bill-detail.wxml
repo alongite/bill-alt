@@ -1,3 +1,20 @@
 <!--miniprogram/pages/bill-detail/bill-detail.wxml-->
 <view>
+  <i-cell-group>
+    <i-cell title="类型" value="{{billTypeMap[billType].title}}"></i-cell>
+    <i-cell title="金额" value="{{money}}"></i-cell>
+    <i-cell title="姓名" value="{{name}}"></i-cell>
+    <i-cell title="借款日期" value="{{borrowDate}}"></i-cell>
+    <i-cell title="还款日期" wx:if="{{isReturned}}" value="已归还"></i-cell>
+    <i-cell title="还款日期" wx:elif="{{returnDate}}" value="{{returnDate}}"></i-cell>
+    <i-cell title="还款日期" wx:else value="无限期"></i-cell>
+    <i-cell title="支付方式" value="{{payType}}"></i-cell>
+    <i-cell title="备注" value="{{note}}"></i-cell>
+  </i-cell-group>
+  <view>
+    <button type="warn" bindtap="deleteBill">删除</button>
+    <button wx:if="{{!isReturned}}" class="margin-top-20" type="primary" bindtap="returnBill">确认归还</button>
+    <button class="margin-top-20" bindtap="editBill">编辑</button>
+  </view>
+  
 </view>

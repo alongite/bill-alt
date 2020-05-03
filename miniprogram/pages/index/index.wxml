@@ -6,10 +6,12 @@
     <i-tab key="borrow" title="借入"></i-tab>
   </i-tabs>
   <i-cell-group>
-    <i-cell is-link wx:for="{{showBillList}}" bind:click="clickBillItem" wx:key="_id">
+    <i-cell is-link wx:for="{{showBillList}}" bind:click="clickBillItem" wx:key="_id" data-id="{{item._id}}">
       <view>{{item.money}} <i-tag>{{billTypeMap[item.billType].title}}</i-tag></view>
       <view class="detail">详细信息：{{item.borrowDate}}，{{item.name}}，{{item.payType}}</view>
-      <view class="detail" wx:if="{{item.returnDate}}">预计归还：{{item.returnDate}}</view>
+      <view class="detail" wx:if="{{item.isReturned}}">预计归还：已归还</view>
+      <view class="detail" wx:elif="{{item.returnDate}}">预计归还：{{item.returnDate}}</view>
+      <view class="detail" wx:else>预计归还：无限期</view>
     </i-cell>
   </i-cell-group>
   <i-load-more loading="{{loading}}" i-class="padding-bottom-60"/>

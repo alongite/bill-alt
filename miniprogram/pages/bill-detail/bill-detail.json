@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "i-cell-group": "../../components/iview-weapp/cell-group/index",
+    "i-cell": "../../components/iview-weapp/cell/index"
+  }
 }

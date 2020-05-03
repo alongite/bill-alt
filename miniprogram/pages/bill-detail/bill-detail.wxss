@@ -1,1 +1,4 @@
 /* miniprogram/pages/bill-detail/bill-detail.wxss */
+.margin-top-20 {
+  margin-top: 20px;
+}
