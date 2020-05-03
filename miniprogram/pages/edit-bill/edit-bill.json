@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "i-cell-group": "../../components/iview-weapp/cell-group/index",
+    "i-cell": "../../components/iview-weapp/cell/index",
+    "i-panel": "../../components/iview-weapp/panel/index",
+    "i-icon": "../../components/iview-weapp/icon/index"
+  }
+}

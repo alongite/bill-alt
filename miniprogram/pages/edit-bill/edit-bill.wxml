@@ -1,0 +1,50 @@
+<!--pages/edit-bill/edit-bill.wxml-->
+<view>
+  <i-cell-group>
+    <i-cell>
+      <view class="form-label inline-block">类型</view>
+      <picker class="inline-block" value="{{billTypeIndex}}" bindchange="changeBillType" range="{{typeRange}}" range-key="title">
+        <view class="picker">{{typeRange[billTypeIndex].title}}</view>
+      </picker>
+    </i-cell>
+    <i-cell>
+      <view class="form-label inline-block">金额</view>
+      <input class="inline-block" value="{{ money }}" bindinput="inputMoney" type="digit" placeholder="请输入金额" />
+    </i-cell>
+    <i-cell>
+      <view class="form-label inline-block">姓名</view>
+      <input class="inline-block" value="{{ name }}" bindinput="inputName" type="text" placeholder="请输入姓名" />
+    </i-cell>
+    <!-- <i-input value="{{ money }}" type="number" title="金额 *" placeholder="请输入金额" /> -->
+    <!-- <i-input value="{{ name }}" title="姓名 *" placeholder="请输入姓名" /> -->
+    <i-cell>
+      <view class="form-label inline-block">借款日期</view>
+      <picker class="inline-block" mode="date" value="{{borrowDate}}" bindchange="changeBorrowDate">
+        <view class="picker">{{borrowDate}}</view>
+      </picker>
+    </i-cell>
+    <i-cell>
+      <view class="form-label inline-block">还款日期</view>
+      <picker class="inline-block" mode="date" value="{{returnDate}}" bindchange="changeReturnDate">
+        <view wx:if="{{returnDate}}" class="picker">
+          {{returnDate}}
+        </view>
+        <view wx:else>无限期</view>
+      </picker>
+      <view wx:if="{{returnDate}}" class="clear-btn" bind:tap="clearReturnDate">
+        <i-icon type="delete"/>
+      </view>
+    </i-cell>
+    <i-cell>
+      <view class="form-label inline-block">支付方式</view>
+      <input class="inline-block" value="{{ payType }}" bindinput="inputPayType" type="text" placeholder="如支付宝" />
+    </i-cell>
+    <!-- <i-input value="{{ payType }}" title="支付方式" placeholder="如支付宝" /> -->
+    <!-- <i-input value="{{ note }}" type="textarea" maxlength="100" title="备注" placeholder="其他说明" /> -->
+    <i-cell>
+      <view class="form-label inline-block">备注</view>
+      <textarea class="margin-top-20" value="{{ note }}"  bindinput="inputNote" auto-height="{{true}}" placeholder="其他说明" ></textarea>
+    </i-cell>
+  </i-cell-group>
+  <button class="margin-top-20" disabled="{{loading}}" bind:tap="handleSubmit" type="primary">提交</button>
+</view>

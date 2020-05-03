@@ -1,0 +1,90 @@
+// pages/edit-bill/edit-bill.js
+const app = getApp()
+const util = require('../../util/util')
+const CONST = require('../../util/const')
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    loading: false,
+    typeRange: CONST.billType,
+    billTypeIndex: 0,
+    borrowDate: util.formatDate(new Date()),
+    returnDate: undefined,
+    money: undefined,
+    name: undefined,
+    payType: undefined,
+    note: undefined
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+  setSingleData(key, value){
+    let obj = {};
+    obj[key] = value;
+    this.setData(obj);
+  },
+  inputMoney(e){
+    this.setSingleData('money', e.detail.value);
+  },
+  inputName(e){
+    this.setSingleData('name', e.detail.value);
+  },
+
+  changeBillType({detail}){
+    this.setSingleData('billTypeIndex', detail.value);
+  },
+
+  changeBorrowDate({detail}){
+    this.setSingleData('borrowDate', detail.value);
+  },
+
+  changeReturnDate({detail}){
+    this.setSingleData('returnDate', detail.value);
+  },
+
+  clearReturnDate(){
+    console.log('clear return date')
+    this.setSingleData('returnDate', 0);
+  },
+
+  inputPayType(e){
+    this.setSingleData('payType', e.detail.value);
+  },
+
+  inputNote(e){
+    this.setSingleData('note', e.detail.value);
+  },
+
+  handleSubmit(){
+    this.setData({
+      loading: true
+    });
+    const db = app.globalData.db
+    const billInfo = db.collection(CONST.COLLECTION_BILLS)
+    billInfo.add({
+      data: {
+        name: this.data.name,
+        money: this.data.money,
+        billType: this.data.typeRange[this.data.billTypeIndex].value,
+        borrowDate: this.data.borrowDate,
+        returnDate: this.data.returnDate,
+        payType: this.data.payType,
+        note: this.data.note
+      }
+    }).then(res => {
+      console.log(res);
+      wx.navigateBack()
+    }).finally(() => {
+      this.setData({
+        loading: false
+      })
+    })
+  }
+})

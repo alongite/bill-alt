@@ -1,3 +1,11 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "i-tabs": "../../components/iview-weapp/tabs/index",
+    "i-tab": "../../components/iview-weapp/tab/index",
+    "i-cell-group": "../../components/iview-weapp/cell-group/index",
+    "i-cell": "../../components/iview-weapp/cell/index",
+    "i-tag": "../../components/iview-weapp/tag/index",
+    "i-button": "../../components/iview-weapp/button/index",
+    "i-load-more": "../../components/iview-weapp/load-more/index"
+  }
 }
