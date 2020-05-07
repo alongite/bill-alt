@@ -40,9 +40,9 @@ Page({
     }).get().then(res => {
       console.log(res)
       let billInfo = res.data[0];
-      this.setData({
+      this.setData(Object.assign({isReturned: false}, {
         ...billInfo // _openid, _id
-      })
+      }))
     })
   },
 

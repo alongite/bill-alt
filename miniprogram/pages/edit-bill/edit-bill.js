@@ -113,7 +113,8 @@ Page({
         borrowDate: this.data.borrowDate,
         returnDate: this.data.returnDate,
         payType: this.data.payType,
-        note: this.data.note
+        note: this.data.note,
+        isReturned: false
       }
     }).then(res => {
       console.log(res);
